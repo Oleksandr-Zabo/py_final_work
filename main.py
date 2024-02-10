@@ -56,7 +56,6 @@ for i in range(num_str8):
 print(start_upeer(list_of_str8))
 
 
-
 # 9
 def have_python(list_str):
     new_list = [string for string in list_str if "Python" in string]
@@ -69,3 +68,84 @@ for i in range(num_str8):
     string_u = input("Введи рядок: ")
     list_of_str9.append(string_u)
 print(have_python(list_of_str9))
+
+# Частина 2
+import random
+
+print("Python вікторина")
+
+questions = ["Що таке інтерпретатор Python?", "Які типи даних є в Python?",
+             "Як створити список цілих чисел від 1 до 10 включно?", "Як вивести перший елемент зі списку?",
+             "Як перевірити, чи є елемент у списку?"]
+right_answers = [
+    "Інтерпретатор - це місце, де ви пишете код і яке обробляє процес його виконання. Він відповідає за запуск вашого коду",
+    "В Python є різні типи даних, такі як цілі числа, дійсні числа, рядки, списки, кортежі, словники, множини та булеві значення",
+    "my_list = list(range(1, 11))", "print(my_list[0])", "if element in my_list:"]
+answers_1 = ["Інтерпретатор - це програма, яка перетворює Python-код на машинний код",
+             "Інтерпретатор - це інструмент для створення графічних інтерфейсів користувача",
+             "Інтерпретатор - це набір стандартних функцій Python"]
+answers_2 = ["Типи даних в Python обмежуються лише цілими числами та рядками", "В Python немає типу даних список",
+             "Типи даних в Python визначаються виключно користувачем"]
+
+answers_3 = ["my_list = [x for x in range(10)]", "my_list = list(range(1, 11, 2))",
+             "my_list = [1, 2, 3, 4, 4, 6, 7, 8, 9, 10]"]
+answers_4 = ["print(my_list[-1])", "print(my_list[1])", "print(my_list[len(my_list) - 1])"]
+answers_5 = ["if element not in my_list:", "if element == my_list:", "if element is my_list:"]
+list_to_text = []
+user = input("Введи твоє ім'я: ")
+
+
+def question_answers(user_name, question, answers, right_answer):
+    print(f"{user_name}. Питання:\n{question}")
+    a = range(1, 5)
+    list_answ = random.sample(a, 4)
+    list_ansers = []
+    for j in list_answ:
+        if j == 1:
+            list_ansers.append(right_answer)
+        elif j == 2:
+            list_ansers.append(answers[0])
+        elif j == 3:
+            list_ansers.append(answers[1])
+        else:
+            list_ansers.append(answers[2])
+    dict_answ = {1: list_ansers[0], 2: list_ansers[1], 3: list_ansers[2], 4: list_ansers[3]}
+    for key, value in dict_answ.items():
+        print(key, ".", value)
+    user_answer = int(input("Введи відповідь(цифра): "))
+    if dict_answ[user_answer] == right_answer:
+        print("Відповідь зараховано")
+        return "Відповідь правильна\n"
+    else:
+        print("Відповідь зараховано")
+        return f"Правильна відповідь: {right_answer}\n"
+
+
+for i in range(5):
+    if i == 0:
+        list_to_text.append(question_answers(user, questions[0], answers_1, right_answers[0]))
+    elif i == 1:
+        list_to_text.append(question_answers(user, questions[1], answers_2, right_answers[1]))
+    elif i == 2:
+        list_to_text.append(question_answers(user, questions[2], answers_3, right_answers[2]))
+    elif i == 3:
+        list_to_text.append(question_answers(user, questions[3], answers_4, right_answers[3]))
+    else:
+        list_to_text.append(question_answers(user, questions[4], answers_5, right_answers[4]))
+
+right_as = list_to_text.count("Відповідь правильна\n")
+
+
+def write_results(userr, res_list, mark, file1):
+    f_line = f"Результати {userr}:\nОцінка:{mark} з 5\n"
+    with open(file1, "w", encoding="utf-8") as file:
+        file.write(f_line)
+
+    with open(file1, "a", encoding="utf-8") as file:
+        file.writelines(res_list)
+
+    print(f"Результати {userr}:\nОцінка:{mark} з 5")
+    print("\n".join(res_list))
+
+
+write_results(user, list_to_text, right_as, "results.txt")
