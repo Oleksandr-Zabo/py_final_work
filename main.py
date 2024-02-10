@@ -41,6 +41,9 @@ list_6 = [x for x in range(1, 25)]
 list2_6 = list(filter(lambda x: x % 2 == 0, list_6))
 print(list2_6)
 
+# 7
+
+
 
 # 8
 def start_upeer(list_str):
