@@ -1,3 +1,5 @@
+import random
+
 print("Hello python exam")
 
 # Частина 1
@@ -41,8 +43,15 @@ list_6 = [x for x in range(1, 25)]
 list2_6 = list(filter(lambda x: x % 2 == 0, list_6))
 print(list2_6)
 
-# 7
 
+# 7
+student_names = ["Oliver", "Sophia", "William", "Emma", "Henry"]
+student_grades = {}
+for name in student_names:
+    grade = random.randint(6, 12)
+    student_grades[name] = grade
+best_student = max(student_grades, key=student_grades.get)
+print(f"Студент з найвищою оцінкою: {best_student} (оцінка: {student_grades[best_student]})")
 
 
 # 8
@@ -73,8 +82,6 @@ for i in range(num_str8):
 print(have_python(list_of_str9))
 
 # Частина 2
-import random
-
 print("Python вікторина")
 
 questions = ["Що таке інтерпретатор Python?", "Які типи даних є в Python?",
