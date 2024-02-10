@@ -41,3 +41,16 @@ list_6 = [x for x in range(1, 25)]
 list2_6 = list(filter(lambda x: x % 2 == 0, list_6))
 print(list2_6)
 
+
+# 8
+def start_upeer(list_str):
+    new_list = [string for string in list_str if string[0].isupper()]
+    return new_list
+
+
+num_str8 = int(input("Введи кількість рядків: "))
+list_of_str8 = []
+for i in range(num_str8):
+    string_u = input("Введи рядок: ")
+    list_of_str8.append(string_u)
+print(start_upeer(list_of_str8))
