@@ -23,3 +23,15 @@ print(sum_range3)
 user_str4 = input("Введи твій рядок: ")
 for char in user_str4:
     print(char)
+
+# 5
+user_str5 = input("Введи твоє слово: ")
+list_1_5 = []
+list_2_5 = []
+for i in range(len(user_str5)):
+    list_1_5.append(user_str5[i])
+    list_2_5.append(user_str5[-(i+1)])
+if list_1_5 == list_2_5:
+    print("Твоє слово паліндром")
+else:
+    print("Твоє слово не паліндром")
