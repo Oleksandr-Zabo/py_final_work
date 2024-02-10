@@ -14,7 +14,12 @@ print(f"Сума діапазону чисел : {sum_range2}")
 
 # 3
 sum_range3 = 0
-for i in range(1, 100+1):
+for i in range(1, 100 + 1):
     if i % 2 == 0:
         sum_range3 += i
 print(sum_range3)
+
+# 4
+user_str4 = input("Введи твій рядок: ")
+for char in user_str4:
+    print(char)
